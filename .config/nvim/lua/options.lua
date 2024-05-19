@@ -16,3 +16,8 @@ vim.keymap.set('n', '<leader>q', '<Cmd>bd<CR>')
 vim.keymap.set('n', '<leader>w', '<Cmd>w<CR>')
 vim.keymap.set('n', '<leader>y', '"+y')
 vim.keymap.set('v', '<leader>y', '"+y')
+
+vim.keymap.set('n', '<M-h>', '<Cmd>vertical resize -1<CR>')
+vim.keymap.set('n', '<M-j>', '<Cmd>resize -1<CR>')
+vim.keymap.set('n', '<M-k>', '<Cmd>resize +1<CR>')
+vim.keymap.set('n', '<M-l>', '<Cmd>vertical resize +1<CR>')

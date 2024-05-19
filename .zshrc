@@ -40,8 +40,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux nvm zsh-autosuggestions zsh-syntax-highlighting)
-# plugins=(git tmux nvm zsh-syntax-highlighting)
+# plugins=(git tmux nvm)
+plugins=(git tmux nvm fzf zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -71,12 +71,19 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 alias e="nvim"
 alias nvimp="nvim ~/.config/nvim/lua/plugins/"
-alias bat="batcat"
 alias cat="batcat -n"
-
+alias pip="python3 -m pip"
+alias fzf="fzf --preview 'batcat --color=always {}'"
+function cdf() {
+    cd $(find ~ -type d -print -maxdepth 3 | fzf);
+    zle accept-line;
+    zle redisplay;
+    clear;
+}
+zle -N cdf
+bindkey '^o' cdf
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -86,5 +93,8 @@ export NVM_DIR="$HOME/.nvm"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-export PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export PATH="/home/jay/.local/bin:$PATH"
+# export PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
+# export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
