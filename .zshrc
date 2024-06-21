@@ -70,6 +70,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
+alias f='cd $(fd --type d --hidden --exclude .git --exclude node_module --exclude .cache --exclude .npm --exclude .mozilla --exclude .meteor --exclude .nv | fzf)'
 
 alias e="nvim"
 alias nvimp="nvim ~/.config/nvim/lua/plugins/"
@@ -77,17 +80,21 @@ alias cat="batcat -n"
 alias pip="python3 -m pip"
 alias fzf="fzf --preview 'batcat --color=always {}'"
 function cdf() {
-    cd $(find ~ -type d -print -maxdepth 3 | fzf);
+    cd ~ && cd $(fd --type directory --maxdepth 3 \
+        --exclude node_modules \
+        --exclude .git \
+        --exclude .cache \
+        --exclude __pycache__ \
+        | fzf);
     zle accept-line;
     zle redisplay;
-    clear;
 }
 zle -N cdf
 bindkey '^o' cdf
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -98,3 +105,4 @@ export PATH="/home/jay/.local/bin:$PATH"
 # export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+alias multimc="~/.local/share/multimc/MultiMC"

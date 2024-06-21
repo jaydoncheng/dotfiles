@@ -21,9 +21,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
             vim.api.nvim_buf_set_option(0, "bufhidden", "wipe")
 
-            require("telescope.builtin").find_files({
-                cwd = vim.fn.expand("%:p:h"),
-            })
+            vim.cmd("Telescope file_browser path=%:p:h select_buffer=true")
+            -- require("telescope.builtin").find_files({
+            --     cwd = vim.fn.expand("%:p:h"),
+            -- })
         end)
     end,
 })
