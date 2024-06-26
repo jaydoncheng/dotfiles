@@ -39,6 +39,9 @@ return {
 							},
 						},
 					},
+                    live_grep = {
+                        path_display = { "tail" },
+                    }
 				},
 			})
 
@@ -64,7 +67,11 @@ return {
 				builtin.find_files({ cwd = vim.fn.getcwd() })
 			end, { desc = "Find files in current working directory" })
 
-			vim.keymap.set("n", "<leader>l", builtin.treesitter, {
+			vim.keymap.set("n", "<leader>l", function()
+                builtin.lsp_document_symbols({
+                    initial_mode = "insert",
+                })
+            end, {
 				desc = "List treesitter symbols",
 			})
 		end,

@@ -3,6 +3,7 @@ return {
     config = function ()
         require('colorizer').setup({
             filetypes = {
+                '*',
                 css = { css = true },
                 'javascript',
                 html = { names = false}
