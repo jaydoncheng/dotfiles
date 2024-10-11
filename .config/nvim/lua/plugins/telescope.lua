@@ -40,6 +40,7 @@ return {
 						},
 					},
                     live_grep = {
+                        initial_mode = "insert",
                         path_display = { "tail" },
                     }
 				},

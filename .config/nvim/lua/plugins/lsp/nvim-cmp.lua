@@ -39,6 +39,8 @@ return {
                     { name = "luasnip" },
                     { name = "buffer" },
                     { name = "path" },
+                    { name = "emoji" },
+                    { name = "natdat" },
                 }),
                 window = {
                     completion = cmp.config.window.bordered(),
