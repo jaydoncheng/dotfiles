@@ -10,6 +10,7 @@ return {
         event = "InsertEnter",
         dependencies = {
             "hrsh7th/cmp-buffer",  -- source text in buffer
+            "hrsh7th/cmp-nvim-lsp", -- source for LSP
             "hrsh7th/cmp-path",    -- source for paths
             "L3MON4D3/LuaSnip",    -- snippet engine
             "saadparwaiz1/cmp_luasnip", -- autocomplete snippets
@@ -36,11 +37,12 @@ return {
                 sources = cmp.config.sources({
                     -- { name = "copilot" },
                     { name = "nvim_lsp" },
+                    { name = "natdat" },
                     { name = "luasnip" },
                     { name = "buffer" },
                     { name = "path" },
                     { name = "emoji" },
-                    { name = "natdat" },
+                    { name = "nvim_lua" },
                 }),
                 window = {
                     completion = cmp.config.window.bordered(),

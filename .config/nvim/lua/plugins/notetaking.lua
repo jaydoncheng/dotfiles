@@ -2,13 +2,15 @@ return {
     {
         "Gelio/cmp-natdat",
         config = function()
-            require("cmp_natdat").setup({})
-        end
+            require("cmp_natdat").setup({
+                cmp_kind_text = "NatDat",
+                highlight_group = "Red",
+            })
+        end,
     },
     {
         "allaman/emoji.nvim",
         version = "1.0.0", -- optionally pin to a tag
-        ft = "markdown", -- adjust to your needs
         dependencies = {
             -- optional for nvim-cmp integration
             "hrsh7th/nvim-cmp",

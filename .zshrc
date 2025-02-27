@@ -80,7 +80,7 @@ alias cat="batcat -n"
 alias pip="python3 -m pip"
 alias fzf="fzf --preview 'batcat --color=always {}'"
 function cdf() {
-    cd ~ && cd $(fd --type directory --maxdepth 3 \
+    cd ~ && cd $(fd --type directory --maxdepth 4 \
         --exclude node_modules \
         --exclude .git \
         --exclude .cache \
@@ -92,6 +92,19 @@ function cdf() {
 zle -N cdf
 bindkey '^o' cdf
 
+function nvimf() {
+    cd ~ && nvim $(fd --type directory --maxdepth 4 \
+        --exclude node_modules \
+        --exclude .git \
+        --exclude .cache \
+        --exclude __pycache__ \
+        | fzf);
+    zle accept-line;
+    zle redisplay;
+}
+zle -N nvimf
+bindkey '^i' nvimf
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -101,6 +114,8 @@ export NVM_DIR="$HOME/.nvm"
 
 
 export PATH="/home/jay/.local/bin:$PATH"
+export PATH="/home/jay/repos/Odin:$PATH"
+export ODIN_ROOT="/home/jay/repos/Odin"
 # export PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
 # export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
