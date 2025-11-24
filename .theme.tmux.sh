@@ -103,7 +103,7 @@ tmux_set status-attr none
 tmux_set @prefix_highlight_fg "$BG"
 tmux_set @prefix_highlight_bg "$FG"
 tmux_set @prefix_highlight_show_copy_mode 'on'
-tmux_set @prefix_highlight_copy_mode_attr "fg=$TC,bg=$BG,bold"
+tmux_set @prefix_highlight_copy_mode_attr "fg=$TC,bg=$BG"
 tmux_set @prefix_highlight_output_prefix "#[fg=$TC]#[bg=$BG]$larrow#[bg=$TC]#[fg=$BG]"
 tmux_set @prefix_highlight_output_suffix "#[fg=$TC]#[bg=$BG]$rarrow"
 
@@ -113,7 +113,7 @@ tmux_set status-left-bg "$G04"
 tmux_set status-left-fg "$G12"
 tmux_set status-left-length 150
 user=$(whoami)
-LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]$rarrow#[fg=$TC,bg=$G06] #[fg=$TC2,bg=$G06]$session_icon #S "
+LS="#[fg=$G04,bg=$TC] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]$rarrow#[fg=$TC,bg=$G06] #[fg=$TC2,bg=$G06]$session_icon #S "
 if "$show_upload_speed"; then
     LS="$LS#[fg=$G06,bg=$G05]$rarrow#[fg=$TC,bg=$G05] $upload_speed_icon #{upload_speed} #[fg=$G05,bg=$BG]$rarrow"
 else
@@ -142,12 +142,12 @@ tmux_set status-right "$RS"
 
 # Window status format
 tmux_set window-status-format         "#[fg=$BG,bg=$G06]$rarrow#[fg=$TC,bg=$G06] #I:#W#F #[fg=$G06,bg=$BG]$rarrow"
-tmux_set window-status-current-format "#[fg=$BG,bg=$TC]$rarrow#[fg=$BG,bg=$TC,bold] #I:#W#F #[fg=$TC,bg=$BG,nobold]$rarrow"
+tmux_set window-status-current-format "#[fg=$BG,bg=$TC]$rarrow#[fg=$BG,bg=$TC] #I:#W#F #[fg=$TC,bg=$BG,nobold]$rarrow"
 
 # Window status style
 tmux_set window-status-style          "fg=$TC,bg=$BG,none"
-tmux_set window-status-last-style     "fg=$TC,bg=$BG,bold"
-tmux_set window-status-activity-style "fg=$TC,bg=$BG,bold"
+tmux_set window-status-last-style     "fg=$TC,bg=$BG"
+tmux_set window-status-activity-style "fg=$TC,bg=$BG"
 
 # Window separator
 tmux_set window-status-separator ""

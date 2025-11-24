@@ -11,6 +11,9 @@ return {
 					path_display = { "smart" },
 					initial_mode = "normal",
                     mappings = {
+                        n = {
+                            ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                        },
                         i = {
                             ["<C-j>"] = actions.move_selection_next,
                             ["<C-k>"] = actions.move_selection_previous,
@@ -83,7 +86,7 @@ return {
 			end, { desc = "Find files in current buffer directory" })
 
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep in current working directory" })
-			vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "List buffers" })
+			-- vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "List buffers" })
 			vim.keymap.set("n", "<leader>fb", function()
 				builtin.live_grep({ search_dirs = { vim.fn.expand("%:p") } })
 			end, { desc = "Live grep in buffer" })

@@ -15,13 +15,14 @@ return {
 		})
 
 		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-		vim.lsp.set_log_level("trace")
+		-- vim.lsp.set_log_level("trace")
 
 		local function on_attach()
 			vim.keymap.set("n", "gD", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", {})
 			vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", {})
 			vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", {})
+			vim.keymap.set("n", "<leader>fe", "<cmd>Telescope diagnostics<CR>", {})
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "List code actions" })

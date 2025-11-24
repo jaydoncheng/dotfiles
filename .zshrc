@@ -1,3 +1,5 @@
+DISABLE_AUTO_UPDATE=true
+
 agent_env=~/.ssh/agent.env
 agent_load_env () { test -f "$agent_env" && . "$agent_env" >| /dev/null ; }
 agent_start () {
@@ -42,6 +44,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git tmux nvm)
 plugins=(git tmux nvm fzf zsh-autosuggestions)
+plugins=(git tmux fzf zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,8 +108,8 @@ function nvimf() {
 zle -N nvimf
 bindkey '^i' nvimf
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -121,3 +124,8 @@ export ODIN_ROOT="/home/jay/repos/Odin"
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 alias multimc="~/.local/share/multimc/MultiMC"
+
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}

@@ -25,7 +25,7 @@ return {
             require("emoji").setup(opts)
             -- optional for telescope integration
             local ts = require("telescope").load_extension("emoji")
-            vim.keymap.set("n", "<leader>fe", ts.emoji, { desc = "[S]earch [E]moji" })
+            vim.keymap.set("n", "<leader>fE", ts.emoji, { desc = "[S]earch [E]moji" })
         end,
     },
 }
